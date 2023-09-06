@@ -3,9 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title> index </title>
+	<script>
+		const saveReq = () =>{
+			location.href= "/board/save";
+		}
+		const listReq = () =>{
+			location.href= "/board/list";
+		}
+	</script>
 </head>
-	<body>
-		Hello World<br><br>
-		practice project for web board<hr>
-	</body>
+<body>
+	Hello World<br><br>
+	practice project for web board<hr>
+	<button onclick="saveReq()"> 글 작성 </button>
+	<a href="/board/save">글작성(링크)</a> <br>
+	<button onclick="listReq()"> 글 목록 </button>
+	<a href="/board/list">글목록(링크)</a>
+</body>
 </html>
