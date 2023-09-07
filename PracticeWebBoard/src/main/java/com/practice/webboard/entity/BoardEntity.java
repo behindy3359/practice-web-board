@@ -37,12 +37,29 @@ public class BoardEntity extends BaseEntity{
 	
 	
 	public static BoardEntity toSaveEntity(BoardDTO boardDTO) {
+		
 		BoardEntity boardEntity = new BoardEntity();
+		
 		boardEntity.setBoardWriter(boardDTO.getBoardWriter());
 		boardEntity.setBoardPassword(boardDTO.getBoardPassword());
 		boardEntity.setBoardTitle(boardDTO.getBoardTitle());
 		boardEntity.setBoardContents(boardDTO.getBoardContents());
 		boardEntity.setBoardHits(0);
+		
+		return boardEntity;
+	}
+
+
+	public static BoardEntity toUpdateEntity(BoardDTO boardDTO) {
+		
+		BoardEntity boardEntity = new BoardEntity();
+		
+		boardEntity.setId(boardDTO.getId());
+		boardEntity.setBoardWriter(boardDTO.getBoardWriter());
+		boardEntity.setBoardPassword(boardDTO.getBoardPassword());
+		boardEntity.setBoardTitle(boardDTO.getBoardTitle());
+		boardEntity.setBoardContents(boardDTO.getBoardContents());
+		boardEntity.setBoardHits( boardDTO.getBoardHits() );
 		
 		return boardEntity;
 	}
