@@ -37,6 +37,11 @@ practice project for board on the web.
 
 ****
 
+#### 0.0.2
+
+
+practice for webboard Ｕ,Ｄ
+
 
 #### 0.0.1
 
