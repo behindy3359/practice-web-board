@@ -6,11 +6,12 @@
 	</head>
 	<body>
 		board-save-form.html<hr>
-		<form action="/board/save" method="post">
-			writer:<input type="text" name ="boardWriter"> <br>
+		<form action="/board/save" method="post" enctype="multipart/form-data">
+			writer: <input type="text" name ="boardWriter"> <br>
 			password: <input type="text" name ="boardPassword"> <br>
-			title:<input type="text" name ="boardTitle"> <br>
-			contents:<textarea name ="boardContents" cols="30" rows="10"></textarea><br>
+			title: <input type="text" name ="boardTitle"> <br>
+			contents: <textarea name ="boardContents" cols="30" rows="10"></textarea><br>
+			file: <input type="file" name="boardFile" multiple><br>
 			<input type="submit" value="글 작성">
 		</form>
 	</body>

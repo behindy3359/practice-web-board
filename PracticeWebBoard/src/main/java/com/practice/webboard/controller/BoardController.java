@@ -1,5 +1,6 @@
 package com.practice.webboard.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -31,11 +32,9 @@ public class BoardController {
 		return "/board/board-save-form";
 	}
 	@PostMapping("/save")
-	public String save( @ModelAttribute BoardDTO boardDTO ) {
+	public String save( @ModelAttribute BoardDTO boardDTO ) throws IOException {
 		
-		System.out.println("boardDTO = "+ boardDTO);
 		boardService.save(boardDTO);
-		
 		
 		return "index";
 	}
@@ -64,7 +63,6 @@ public class BoardController {
 	@GetMapping("/update/{id}")
 	public String updateForm( @PathVariable int id, Model model ) {
 		
-		System.out.println( "id : "+id );
 		BoardDTO boardDTO = boardService.findById(id);
 		model.addAttribute( "boardUpdate", boardDTO );
 		
@@ -82,7 +80,9 @@ public class BoardController {
 	//About delete board
 	@GetMapping( "/delete/{id}" )
 	public String delete( @PathVariable int id ) {
+		
 		boardService.delete( id );
+		
 		return  "redirect:/board/list";
 	}
 	
@@ -100,7 +100,6 @@ public class BoardController {
 		model.addAttribute( "boardList", boardList );
 		model.addAttribute( "startPage", startPage );
 		model.addAttribute( "endPage", endPage );
-		
 		
 		return "/board/board-paging";
 	}
