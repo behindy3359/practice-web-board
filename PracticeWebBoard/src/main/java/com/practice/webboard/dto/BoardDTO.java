@@ -19,26 +19,26 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardDTO {
-	
+
 	private int id;
-	
+
 	private String boardWriter;
 	private String boardPassword;
 	private String boardTitle;
 	private String boardContents;
-	
+
 	private int boardHits;
-	
+
 	private LocalDateTime boardCreatedTime;
 	private LocalDateTime boardUpdatedTime;
-	
+
 	private List<MultipartFile> boardFile;
 	private List<String> originalFileName;
 	private List<String> storedFileName;
 	private int fileAttached;
-	
-	public BoardDTO( int id, String boardWriter, String boardTitle, int boardHits, LocalDateTime boardCreaDateTime ) {
-	
+
+	public BoardDTO(int id, String boardWriter, String boardTitle, int boardHits, LocalDateTime boardCreaDateTime) {
+
 		this.id = id;
 		this.boardWriter = boardWriter;
 		this.boardTitle = boardTitle;
@@ -46,12 +46,11 @@ public class BoardDTO {
 		this.boardCreatedTime = boardCreaDateTime;
 
 	}
-	
-	
+
 	public static BoardDTO toBoardDTO(BoardEntity boardEntity) {
-		
+
 		BoardDTO boardDTO = new BoardDTO();
-		
+
 		boardDTO.setId(boardEntity.getId());
 		boardDTO.setBoardWriter(boardEntity.getBoardWriter());
 		boardDTO.setBoardPassword(boardEntity.getBoardPassword());
@@ -60,24 +59,23 @@ public class BoardDTO {
 		boardDTO.setBoardHits(boardEntity.getBoardHits());
 		boardDTO.setBoardCreatedTime(boardEntity.getCreatedTime());
 		boardDTO.setBoardUpdatedTime(boardEntity.getUpdatedTime());
-		
-		if( boardEntity.getFileAttached() == 0 ) {
+
+		if (boardEntity.getFileAttached() == 0) {
 			boardDTO.setFileAttached(boardEntity.getFileAttached());
-		}else{	
+		} else {
 			List<String> originalFileNameList = new ArrayList<>();
 			List<String> storedFileNameList = new ArrayList<>();
-			
-			
+
 			boardDTO.setFileAttached(boardEntity.getFileAttached());
-			
-			for( BoardFileEntity boardFileEntity : boardEntity.getBoardFileEntityList() ) {
-				originalFileNameList.add(boardFileEntity.getOriginalFileName() );
+
+			for (BoardFileEntity boardFileEntity : boardEntity.getBoardFileEntityList()) {
+				originalFileNameList.add(boardFileEntity.getOriginalFileName());
 				storedFileNameList.add(boardFileEntity.getStoredFileName());
 			}
 			boardDTO.setOriginalFileName(originalFileNameList);
 			boardDTO.setStoredFileName(storedFileNameList);
 		}
-		
+
 		return boardDTO;
 	}
 }

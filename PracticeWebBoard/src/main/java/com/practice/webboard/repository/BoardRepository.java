@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.practice.webboard.entity.BoardEntity;
 
 @Repository
-public interface BoardRepository extends JpaRepository<BoardEntity, Integer>{
-	
+public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
+
 	@Modifying
-	@Query( value = "update BoardEntity b set b.boardHits = b.boardHits+1 where b.id=:id" )
-	void updateHits( @Param( "id" ) int id );
-	
+	@Query(value = "update BoardEntity b set b.boardHits = b.boardHits+1 where b.id=:id")
+	void updateHits(@Param("id") int id);
+
 }
