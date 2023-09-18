@@ -19,13 +19,13 @@ practice project for board on the web.
 - Spring Boot 2.7.14
 
 
-- gradle - build and library management
+- gradle
 
 
-- MySQL 8.0 - database integration
+- MySQL 8.0
 
 
-- Spring Data JPA - database operations
+- Spring Data JPA
 
   
 - Thymeleaf
